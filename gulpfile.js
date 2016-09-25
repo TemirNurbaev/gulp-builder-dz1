@@ -21,12 +21,14 @@ $.path.task.forEach(function(taskPath) {
 
 $.gulp.task('default', $.gulp.series(
   'clean',
+  'sprite:png', // поставил выполняться перед sass, т.к. выходный css импортируется в app.scss
   $.gulp.parallel(
     'sass',
     'pug',
     'js:foundation',
     'js:process',
     'copy:image',
+    'copy:font',
     'css:foundation',
     'sprite:svg'
   ),
